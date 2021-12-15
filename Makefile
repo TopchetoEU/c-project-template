@@ -13,6 +13,10 @@ output = bin/main
 sources = $(call rwildcard,$(src-dir),*.c)
 binaries = $(patsubst $(src-dir)/%.c,$(bin-dir)/%.o,$(sources))
 
+ifeq sources ''
+$(error No innput files)
+endif
+
 build: clear $(binaries) $(output)
 build-win: clear-win $(binaries) $(output).exe
 
